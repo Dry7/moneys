@@ -36,8 +36,21 @@ Route::group(array('before' => 'admin.auth'), function()
         $total = @DB::select("SELECT SUM(`summ`) as `summ` FROM `payments`")[0]->summ;
         $shops = DB::select("SELECT `company`, SUM(`summ`) as `summ` FROM `payments` GROUP BY `company` ORDER BY SUM(`summ`) DESC");
         $months = DB::select("SELECT date_format(created_at, '%m.%Y') as `month`, SUM(`summ`) as `summ` FROM `payments` GROUP BY date_format(created_at, '%m.%Y') ORDER BY UNIX_TIMESTAMP(created_at) ASC");
+        $months_food = DB::select("SELECT date_format(created_at, '%m.%Y') as `month`, SUM(`summ`) as `summ` FROM `payments` WHERE `section` = 'Еда' GROUP BY date_format(created_at, '%m.%Y') ORDER BY UNIX_TIMESTAMP(created_at) ASC");
+        $months_clothing = DB::select("SELECT date_format(created_at, '%m.%Y') as `month`, SUM(`summ`) as `summ` FROM `payments` WHERE `section` = 'Одежда' GROUP BY date_format(created_at, '%m.%Y') ORDER BY UNIX_TIMESTAMP(created_at) ASC");
+        $months_apartment = DB::select("SELECT date_format(created_at, '%m.%Y') as `month`, SUM(`summ`) as `summ` FROM `payments` WHERE `section` = 'Квартира' AND `category` != 'Аренда' GROUP BY date_format(created_at, '%m.%Y') ORDER BY UNIX_TIMESTAMP(created_at) ASC");
 
-        return View::make('login.dashboard', array('days' => $days, 'sections' => $sections, 'food' => $food, 'total' => $total, 'shops' => $shops, 'months' => $months));
+        return View::make('login.dashboard', array(
+                                                   'days' => $days,
+                                                   'sections' => $sections,
+                                                   'food' => $food,
+                                                   'total' => $total,
+                                                   'shops' => $shops,
+                                                   'months' => $months,
+                                                   'months_food' => $months_food,
+                                                   'months_clothing' => $months_clothing,
+                                                   'months_apartment' => $months_apartment
+        ));
     });
 
     Route::resource('payments', 'PaymentsController');

@@ -85,6 +85,46 @@
             ]),
             { title: 'Расходы по месяцам', curveType: 'function', legend: { position: 'bottom' } }
         );
+
+
+        /** Расходы по месяцам на еду */
+        var chart_months_food = new google.visualization.LineChart(document.getElementById('months_food_div'));
+
+        chart_months_food.draw(
+                google.visualization.arrayToDataTable([
+                    ['Месяц', 'Расходы'],
+                    <?php foreach ( $months_food as $row ) { ?>
+                    ['<?php echo $row->month; ?>', <?php echo $row->summ; ?>],
+                    <?php } ?>
+                ]),
+                { title: 'Расходы по месяцам на еду', curveType: 'function', legend: { position: 'bottom' } }
+        );
+
+        /** Расходы по месяцам на еду */
+        var chart_months_clothing = new google.visualization.LineChart(document.getElementById('months_clothing_div'));
+
+        chart_months_clothing.draw(
+                google.visualization.arrayToDataTable([
+                    ['Месяц', 'Расходы'],
+                    <?php foreach ( $months_clothing as $row ) { ?>
+                    ['<?php echo $row->month; ?>', <?php echo $row->summ; ?>],
+                    <?php } ?>
+                ]),
+                { title: 'Расходы по месяцам на одежду', curveType: 'function', legend: { position: 'bottom' } }
+        );
+
+        /** Расходы по месяцам на квартиру */
+        var chart_months_apartment = new google.visualization.LineChart(document.getElementById('months_apartment_div'));
+
+        chart_months_apartment.draw(
+                google.visualization.arrayToDataTable([
+                    ['Месяц', 'Расходы'],
+                    <?php foreach ( $months_apartment as $row ) { ?>
+                    ['<?php echo $row->month; ?>', <?php echo $row->summ; ?>],
+                    <?php } ?>
+                ]),
+                { title: 'Расходы по месяцам на квартиру', curveType: 'function', legend: { position: 'bottom' } }
+        );
       }
     </script>
 @section('main')
@@ -101,6 +141,9 @@
 <div id="food_div" style="width: 900px; height: 500px;"></div>
 <div id="shops_div" style="width: 900px; height: 500px;"></div>
 <div id="months_div" style="width: 900px; height: 500px;"></div>
+<div id="months_food_div" style="width: 900px; height: 500px;"></div>
+<div id="months_clothing_div" style="width: 900px; height: 500px;"></div>
+<div id="months_apartment_div" style="width: 900px; height: 500px;"></div>
 
 
 <h1>Добавить платеж</h1>
