@@ -71,9 +71,9 @@
     </script>
 @section('main')
 
-<h1>Administrative Dashboard</h1>
+<h1>Панель управления</h1>
 
-<p>Nice to see you, <b>{{{ Auth::user()->username }}}</b></p>
+<p>Добрый день, <b>{{{ Auth::user()->username }}}</b></p>
 <div id="days_div" style="width: 900px; height: 500px;"></div>
 <?php var_dump( $total ); ?>
 <div id="sections_div" style="width: 900px; height: 500px;"></div>
