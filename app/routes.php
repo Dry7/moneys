@@ -34,8 +34,9 @@ Route::group(array('before' => 'admin.auth'), function()
         $sections = DB::select("SELECT `section`, SUM(`summ`) as `summ` FROM `payments` GROUP BY `section` ORDER BY SUM(`summ`) DESC");
         $food = DB::select("SELECT `category`, SUM(`summ`) as `summ` FROM `payments` WHERE `section` = 'Еда' GROUP BY `category` ORDER BY SUM(`summ`) DESC");
         $total = DB::select("SELECT SUM(`summ`) as `summ` FROM `payments`");
+        $shops = DB::select("SELECT `company`, SUM(`summ`) as `summ` FROM `payments` WHERE `section` = 'Еда' GROUP BY `company` ORDER BY SUM(`summ`) DESC");
 
-        return View::make('login.dashboard', array('days' => $days, 'sections' => $sections, 'food' => $food, 'total' => $total));
+        return View::make('login.dashboard', array('days' => $days, 'sections' => $sections, 'food' => $food, 'total' => $total, 'shops' => $shops));
     });
 
     Route::resource('payments', 'PaymentsController');

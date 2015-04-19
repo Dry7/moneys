@@ -67,6 +67,15 @@
         var chart = new google.visualization.PieChart(document.getElementById('food_div'));
 
         chart.draw(data, options);
+
+        var chart_shops = new google.visualization.PieChart(document.getElementById('shops_div'));
+
+        chart_shops.draw(google.visualization.arrayToDataTable([
+            ['Компания', 'Расходы'],
+            <?php foreach ( $shops as $row ) { ?>
+            ['<?php echo $row->company; ?>', <?php echo $row->summ; ?>],
+            <?php } ?>
+        ]), {});
       }
     </script>
 @section('main')
@@ -78,6 +87,7 @@
 <?php var_dump( $total ); ?>
 <div id="sections_div" style="width: 900px; height: 500px;"></div>
 <div id="food_div" style="width: 900px; height: 500px;"></div>
+<div id="shops_div" style="width: 900px; height: 500px;"></div>
 
 <h1>Добавить платеж</h1>
 
