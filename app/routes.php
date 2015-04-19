@@ -30,13 +30,14 @@ Route::group(array('before' => 'admin.auth'), function()
 {
     Route::get('dashboard', function()
     {
-        $days = DB::select("SELECT date_format(created_at, '%d.%m.%Y') AS `created_at`, SUM(`summ`) as `summ` FROM `payments` GROUP BY date_format(created_at, '%d.%m.%Y') ORDER BY UNIX_TIMESTAMP(created_at) DESC LIMIT 7");
+        $days = DB::select("SELECT date_format(created_at, '%d.%m.%Y') AS `created_at`, SUM(`summ`) as `summ` FROM `payments` GROUP BY date_format(created_at, '%d.%m.%Y') ORDER BY UNIX_TIMESTAMP(created_at) DESC LIMIT 31");
         $sections = DB::select("SELECT `section`, SUM(`summ`) as `summ` FROM `payments` GROUP BY `section` ORDER BY SUM(`summ`) DESC");
         $food = DB::select("SELECT `category`, SUM(`summ`) as `summ` FROM `payments` WHERE `section` = 'Еда' GROUP BY `category` ORDER BY SUM(`summ`) DESC");
-        $total = DB::select("SELECT SUM(`summ`) as `summ` FROM `payments`");
-        $shops = DB::select("SELECT `company`, SUM(`summ`) as `summ` FROM `payments` WHERE `section` = 'Еда' GROUP BY `company` ORDER BY SUM(`summ`) DESC");
+        $total = @DB::select("SELECT SUM(`summ`) as `summ` FROM `payments`")[0]->summ;
+        $shops = DB::select("SELECT `company`, SUM(`summ`) as `summ` FROM `payments` GROUP BY `company` ORDER BY SUM(`summ`) DESC");
+        $months = DB::select("SELECT date_format(created_at, '%m.%Y') as `month`, SUM(`summ`) as `summ` FROM `payments` GROUP BY date_format(created_at, '%m.%Y') ORDER BY UNIX_TIMESTAMP(created_at) ASC");
 
-        return View::make('login.dashboard', array('days' => $days, 'sections' => $sections, 'food' => $food, 'total' => $total, 'shops' => $shops));
+        return View::make('login.dashboard', array('days' => $days, 'sections' => $sections, 'food' => $food, 'total' => $total, 'shops' => $shops, 'months' => $months));
     });
 
     Route::resource('payments', 'PaymentsController');

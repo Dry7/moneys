@@ -25,7 +25,9 @@
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
+
       function drawChart() {
+        /** Расходы по дням */
         var data = google.visualization.arrayToDataTable([
           ['Дата', 'Расходы'],
 <?php foreach ( $days as $day ) { ?>
@@ -33,13 +35,11 @@
 <?php } ?>
         ]);
 
-        var options = {
-        };
-
         var chart = new google.visualization.ColumnChart(document.getElementById('days_div'));
 
-        chart.draw(data, options);
+        chart.draw(data, {title: 'Расходы по дням'});
 
+        /** Разделы */
         var data = google.visualization.arrayToDataTable([
           ['Секция', 'Расходы'],
 <?php foreach ( $sections as $section ) { ?>
@@ -47,13 +47,11 @@
 <?php } ?>
         ]);
 
-        var options = {
-        };
-
         var chart = new google.visualization.PieChart(document.getElementById('sections_div'));
 
-        chart.draw(data, options);
+        chart.draw(data, {title: 'Расходы по разделам'});
 
+        /** Расходы на еду */
         var data = google.visualization.arrayToDataTable([
           ['Категория', 'Расходы'],
 <?php foreach ( $food as $row ) { ?>
@@ -61,13 +59,11 @@
 <?php } ?>
         ]);
 
-        var options = {
-        };
-
         var chart = new google.visualization.PieChart(document.getElementById('food_div'));
 
-        chart.draw(data, options);
+        chart.draw(data, {title: 'Расходы на еду'});
 
+        /** Магазины */
         var chart_shops = new google.visualization.PieChart(document.getElementById('shops_div'));
 
         chart_shops.draw(google.visualization.arrayToDataTable([
@@ -75,7 +71,20 @@
             <?php foreach ( $shops as $row ) { ?>
             ['<?php echo $row->company; ?>', <?php echo $row->summ; ?>],
             <?php } ?>
-        ]), {});
+        ]), {title: 'Расходы по магазинам'});
+
+        /** Расходы по месяцам */
+        var chart_months = new google.visualization.LineChart(document.getElementById('months_div'));
+
+        chart_months.draw(
+            google.visualization.arrayToDataTable([
+                ['Месяц', 'Расходы'],
+                <?php foreach ( $months as $row ) { ?>
+                ['<?php echo $row->month; ?>', <?php echo $row->summ; ?>],
+                <?php } ?>
+            ]),
+            { title: 'Расходы по месяцам', curveType: 'function', legend: { position: 'bottom' } }
+        );
       }
     </script>
 @section('main')
@@ -84,10 +93,15 @@
 
 <p>Добрый день, <b>{{{ Auth::user()->username }}}</b></p>
 <div id="days_div" style="width: 900px; height: 500px;"></div>
-<?php var_dump( $total ); ?>
+
+<b>Расходов всего: </b>
+<span><?php echo number_format( $total, 2, '.', ' ' ); ?> р.</span>
+
 <div id="sections_div" style="width: 900px; height: 500px;"></div>
 <div id="food_div" style="width: 900px; height: 500px;"></div>
 <div id="shops_div" style="width: 900px; height: 500px;"></div>
+<div id="months_div" style="width: 900px; height: 500px;"></div>
+
 
 <h1>Добавить платеж</h1>
 
