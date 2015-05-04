@@ -54,7 +54,6 @@ Route::group(array('before' => 'admin.auth'), function()
     });
 
     Route::resource('payments', 'PaymentsController');
-
 });
 
 Route::filter('admin.auth', function() 

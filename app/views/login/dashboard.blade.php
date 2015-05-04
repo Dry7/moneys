@@ -31,7 +31,7 @@
         var data = google.visualization.arrayToDataTable([
           ['Дата', 'Расходы'],
 <?php foreach ( $days as $day ) { ?>
-          ['<?php echo $day->created_at; ?>', <?php echo $day->summ; ?>],
+          ['<?php echo HTML::entities($day->created_at); ?>', <?php echo $day->summ; ?>],
 <?php } ?>
         ]);
 
@@ -43,7 +43,7 @@
         var data = google.visualization.arrayToDataTable([
           ['Секция', 'Расходы'],
 <?php foreach ( $sections as $section ) { ?>
-          ['<?php echo $section->section; ?>', <?php echo $section->summ; ?>],
+          ['<?php echo HTML::entities($section->section); ?>', <?php echo $section->summ; ?>],
 <?php } ?>
         ]);
 
@@ -55,7 +55,7 @@
         var data = google.visualization.arrayToDataTable([
           ['Категория', 'Расходы'],
 <?php foreach ( $food as $row ) { ?>
-          ['<?php echo $row->category; ?>', <?php echo $row->summ; ?>],
+          ['<?php echo HTML::entities($row->category); ?>', <?php echo $row->summ; ?>],
 <?php } ?>
         ]);
 
@@ -69,7 +69,7 @@
         chart_shops.draw(google.visualization.arrayToDataTable([
             ['Компания', 'Расходы'],
             <?php foreach ( $shops as $row ) { ?>
-            ['<?php echo $row->company; ?>', <?php echo $row->summ; ?>],
+            ['<?php echo HTML::entities($row->company); ?>', <?php echo $row->summ; ?>],
             <?php } ?>
         ]), {title: 'Расходы по магазинам'});
 
@@ -80,7 +80,7 @@
             google.visualization.arrayToDataTable([
                 ['Месяц', 'Расходы'],
                 <?php foreach ( $months as $row ) { ?>
-                ['<?php echo $row->month; ?>', <?php echo $row->summ; ?>],
+                ['<?php echo HTML::entities($row->month); ?>', <?php echo $row->summ; ?>],
                 <?php } ?>
             ]),
             { title: 'Расходы по месяцам', curveType: 'function', legend: { position: 'bottom' } }
@@ -94,7 +94,7 @@
                 google.visualization.arrayToDataTable([
                     ['Месяц', 'Расходы'],
                     <?php foreach ( $months_food as $row ) { ?>
-                    ['<?php echo $row->month; ?>', <?php echo $row->summ; ?>],
+                    ['<?php echo HTML::entities($row->month); ?>', <?php echo $row->summ; ?>],
                     <?php } ?>
                 ]),
                 { title: 'Расходы по месяцам на еду', curveType: 'function', legend: { position: 'bottom' } }
@@ -107,7 +107,7 @@
                 google.visualization.arrayToDataTable([
                     ['Месяц', 'Расходы'],
                     <?php foreach ( $months_clothing as $row ) { ?>
-                    ['<?php echo $row->month; ?>', <?php echo $row->summ; ?>],
+                    ['<?php echo HTML::entities($row->month); ?>', <?php echo $row->summ; ?>],
                     <?php } ?>
                 ]),
                 { title: 'Расходы по месяцам на одежду', curveType: 'function', legend: { position: 'bottom' } }
@@ -120,7 +120,7 @@
                 google.visualization.arrayToDataTable([
                     ['Месяц', 'Расходы'],
                     <?php foreach ( $months_apartment as $row ) { ?>
-                    ['<?php echo $row->month; ?>', <?php echo $row->summ; ?>],
+                    ['<?php echo HTML::entities($row->month); ?>', <?php echo $row->summ; ?>],
                     <?php } ?>
                 ]),
                 { title: 'Расходы по месяцам на квартиру', curveType: 'function', legend: { position: 'bottom' } }

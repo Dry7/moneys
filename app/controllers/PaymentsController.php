@@ -21,9 +21,21 @@ class PaymentsController extends BaseController {
 	 */
 	public function index()
 	{
-		$payments = $this->payment->all();
+		$created_at = ['2015-01-01 00:00:00', date('Y-m-d H:i:s')];
 
-		return View::make('payments.index', compact('payments'));
+		if ( Input::get('created_at') ) { $created_at = (array)explode(' - ', Input::get('created_at')); $created_at = [trim($created_at[0]), trim($created_at[1])]; }
+
+		$payments = $this->payment->whereBetween('created_at', $created_at)->
+		                            where('name', 'like', '%' . Input::get('name') . '%')->
+		                            where('section', 'like', '%' . Input::get('section') . '%')->
+		                            where('category', 'like', '%' . Input::get('category') . '%')->
+		                            where('company', 'like', '%' . Input::get('company') . '%')->orderBy('created_at', SORT_DESC)->get();
+
+		if ( Input::get('format') == 'json' ) {
+			return $payments->toJson();
+		} else {
+			return View::make('payments.index', compact('payments'));
+		}
 	}
 
 	/**
