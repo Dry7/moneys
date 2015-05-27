@@ -2,6 +2,10 @@
 
 @section('main')
 
+<?php
+
+?>
+
 <h1>Все платежи</h1>
 
 <p>{{ link_to_route('payments.create', 'Добавить платеж') }}</p>
@@ -58,7 +62,7 @@
 					<td>{{{ $payment->name }}}</td>
 					<td>{{{ $payment->section }}}</td>
 					<td>{{{ $payment->category }}}</td>
-					<td>{{{ $payment->company }}}</td>
+					<td><?php if ( $payment->company_image != '' ) { ?><img src="<?php echo $payment->company_image; ?>" style="width: 20px;"/><?php } ?> {{{ $payment->company }}}</td>
 					<td>{{{ $payment->summ }}} р.</td>
                     <td>{{ link_to_route('payments.edit', 'Обновить', array($payment->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
@@ -92,13 +96,17 @@
 			$.getJSON("/payments", 'format=json&' + $('form.payments').serialize()).done(function(data){
 				$('table.payments tbody').html('');
 				for ( var i = 0; i < data.length; i++ ) {
+					var company_image = '';
+
+					if ( data[i].company_image !== '' ) { company_image = '<img src="' + data[i].company_image + '" style="width: 16px;" /> '; }
+
 					$('table.payments tbody').append(
 							'<tr>' +
 						    	'<td>' + data[i].created_at + '</td>' +
 							    '<td>' + data[i].name + '</td>' +
 							    '<td>' + data[i].section + '</td>' +
 							    '<td>' + data[i].category + '</td>' +
-							    '<td>' + data[i].company + '</td>' +
+							    '<td>' + company_image + ' ' + data[i].company + '</td>' +
 							    '<td>' + data[i].summ + '</td>' +
 							    '<td><a href="/payments/' + data[i].id + '/edit" class="btn btn-info">Обновить</a></td>' +
 							    '<td>' +

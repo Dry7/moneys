@@ -25,11 +25,45 @@ class PaymentsController extends BaseController {
 
 		if ( Input::get('created_at') ) { $created_at = (array)explode(' - ', Input::get('created_at')); $created_at = [trim($created_at[0]), trim($created_at[1])]; }
 
+		$companies = [
+			'Правильный цыпленок' => '/images/companies/proper_chicken.png',
+			'Европа' => '/images/companies/europa-ts.png',
+			'Ашан' => '/images/companies/auchan.png',
+			'Покупайка' => '/images/companies/pokypaika.png',
+			'Лимак-трейд' => '/images/companies/limak.png',
+			'Лента' => '/images/companies/lenta.png',
+			'Дождь' => '/images/companies/tvrain.png',
+			'HTS' => '/images/companies/hts.png',
+			'Masterhost' => '/images/companies/masterhost.png',
+			'DNS' => '/images/companies/dns.png',
+			'Перекресток' => '/images/companies/perekrestok.png',
+			'Pull and Bear' => '/images/companies/pull_and_bear.png',
+			'Магнит' => '/images/companies/magnit.png',
+			'Карусель' => '/images/companies/karusel.png',
+			'O\'stin' => '/images/companies/ostin.png',
+			'О`Кей' => '/images/companies/okmarket.png',
+			'Дикси' => '/images/companies/dixi.png',
+			'Траттория-Пицца' => '/images/companies/cafelip.png',
+			'Coffee way' => '/images/companies/coffeeway.png',
+			'Сетай' => '/images/companies/setai.png',
+			'Русский аппетит' => '/images/companies/rus_app.png',
+			'Яндекс.Деньги' => '/images/companies/yandex.money.png',
+			'WebMoney' => '/images/companies/webmoney.png',
+			'MyBox' => '/images/companies/mybox.png',
+			'Tele2' => '/images/companies/tele2.png',
+			'Coffeecup' => '/images/companies/coffeecup.png',
+			'lipikea.ru' => '/images/companies/lipikea.png',
+		];
+
 		$payments = $this->payment->whereBetween('created_at', $created_at)->
 		                            where('name', 'like', '%' . Input::get('name') . '%')->
 		                            where('section', 'like', '%' . Input::get('section') . '%')->
 		                            where('category', 'like', '%' . Input::get('category') . '%')->
 		                            where('company', 'like', '%' . Input::get('company') . '%')->orderBy('created_at', SORT_DESC)->get();
+
+		foreach ( $payments as $payment ) {
+            $payment->company_image = (string)@$companies[$payment->company];
+		}
 
 		if ( Input::get('format') == 'json' ) {
 			return $payments->toJson();
