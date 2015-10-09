@@ -1,25 +1,13 @@
-## Laravel PHP Framework
+## Система домашней бухгалтерии
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Разработана на Laravel, ниже можете увидеть скриншоты
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
-
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
-
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
-
-## Official Documentation
-
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
-
-### Contributing To Laravel
-
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+![alt tag](https://leto49f.storage.yandex.net/rdisk/53306b67fada2b06375cfbbcc8e64d317e7b5bea1114be647b9918c71a1a3f74/inf/vL8wvg4ELw74BsCP0KJpPXsuQ5PgCkiOlaBpWDJfbbELbb3G8g9GJZ6A4oVOmG-cYuOoQ1ojSg37OaS9ehABQA==?uid=0&filename=01.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&tknv=v2&rtoken=fbd3995baf63776e3e20f0b5cf5af4fe&force_default=no&ycrid=na-b19c9ac13f39ea184f777eff4efc8c08-downloader3g)
+![alt tag](https://leto45e.storage.yandex.net/rdisk/880b865f9e7051005c438d3a2ba8cbcd0729d3d010a08bda47c3f0547ddd1b76/inf/rMMznHm-7v4JcU1IO5a1b5bwr8PlFHQTzE9R17fQ2YOw-tVZGfNb08_EidSvgeZymrcWQUBmzpBqFu2U0EoaYw==?uid=0&filename=02.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&tknv=v2&rtoken=fbd3995baf63776e3e20f0b5cf5af4fe&force_default=no&ycrid=na-a793195cb4cacb79f45b109899e5fb92-downloader3g)
+![alt tag](https://leto49d.storage.yandex.net/rdisk/4b0c39cb67462e3def6cb09d6057f2118cfc8827b345c8bd8157d11095897c49/inf/PtUYqYyNLc3-AaUUd89iKeJxdFz8ID_IBk-nTOO_-68s5pqKvtUc62O-EPQqA3hjE4-oPzuwjdmwSsTJWpepIg==?uid=0&filename=03.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&tknv=v2&rtoken=fbd3995baf63776e3e20f0b5cf5af4fe&force_default=no&ycrid=na-5f204128e8bdb3e4427b3eb33c5a82b8-downloader3g)
+![alt tag](https://leto32h.storage.yandex.net/rdisk/794dd79537d6e5ccdcdf991ffea3d79a7d684cefc08bd08b3e53e3bdeceaa1cc/inf/SFT0jlXSIGwY9j9XdFzR1f55rkWERzK_qwYWJcEwpywHNvk-nW_bXFW0P99aDdTwjXGNwGE0XFoL_G2ve8aJbw==?uid=0&filename=04.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&tknv=v2&rtoken=fbd3995baf63776e3e20f0b5cf5af4fe&force_default=no&ycrid=na-70617815c13eee4e6aaff207941dbfd6-downloader3g)
+![alt tag](https://leto33f.storage.yandex.net/rdisk/770cde1c83a5672afde74e9b658fc8e4825b3d0721c82ae154935ebc5afe4685/inf/ihsf1aw9d5IyQj_7DQlui-cZFcO8D-M5kJoPK9aWIB7PvvboIFL_ZK9Fhax0FdyKg-BykyM7-cLyb5rno8nvDQ==?uid=0&filename=05.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&tknv=v2&rtoken=fbd3995baf63776e3e20f0b5cf5af4fe&force_default=no&ycrid=na-95ff8cb327fac090d09a85b752006115-downloader3g)
+![alt tag](https://leto50h.storage.yandex.net/rdisk/6ee4d4dac0bb74bb3d0a0f6391042ebf01a7f389dbafc64432db668e33f0520f/inf/82ogC65Yd8Uqi4pcd4b3ycdKOusn7YEL9lRiDY_N-sEF46Guolshuhwv694w2oZAgcqGwMJrs9fq_jT7dx2R6g==?uid=0&filename=06.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&tknv=v2&rtoken=fbd3995baf63776e3e20f0b5cf5af4fe&force_default=no&ycrid=na-078903ff4c0ffb653683b0c67e3997a5-downloader3g)
+![alt tag](https://leto32h.storage.yandex.net/rdisk/66a894128d1a5404c89428c6fb4065b8c06d8d902ef711fb7dbd43964543230a/inf/SFT0jlXSIGwY9j9XdFzR1dit4rUqWknqAcslXuwxxLPrFlXzwyuWJTU_m9Ttyn5LEx1SlMRqv55Qjrdc8PLBxQ==?uid=0&filename=07.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&tknv=v2&rtoken=fbd3995baf63776e3e20f0b5cf5af4fe&force_default=no&ycrid=na-0d297a0e984fc3d0307cd30522849894-downloader3g)
+![alt tag](https://leto35g.storage.yandex.net/rdisk/c7c34a3d75f83d88c02495f874f1147e7b4d866cb8dec9d23691c5b0e92748ae/inf/zt9Qa7rYdhb1MWQc08fjrnnGtacqJ9FPdD6KPGVy7awTUVNeQKTeECytf_T-zdyLbI5kMyXC27oX_1Y2etMC2w==?uid=0&filename=08.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&tknv=v2&rtoken=fbd3995baf63776e3e20f0b5cf5af4fe&force_default=no&ycrid=na-537a9db21fc9be4e0410b076efb459f4-downloader3g)
+![alt tag](https://leto3h.storage.yandex.net/rdisk/a544f5e87139691bb077e0736504dbda9e244d371e5fddc8715b6701eed564f7/inf/XhQSd3XJs04RXK4wv_yxUdsv6yfGJQlMOKH7L69bp2Kd9GPTJPgm0Igi7Zp1RVknrniIUmCqC_BXvlbgvrj1eg==?uid=0&filename=09.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&tknv=v2&rtoken=fbd3995baf63776e3e20f0b5cf5af4fe&force_default=no&ycrid=na-227a326c8c9aba24864974ad1258ba52-downloader3g)
